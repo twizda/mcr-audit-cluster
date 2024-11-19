@@ -1,10 +1,10 @@
-# msr.ci.mirantis.com/twizda/audit-cluster
+# msr.ci.mirantis.com/twizda/mcr-cluster-config
 
 docker image for auditing a Swarm/MKE cluster to return the core counts and other sizing stats
 based off of alpine:latest
 
 To pull this image:
-`docker pull msr.ci.mirantis.com/twizda/audit-cluster`
+`docker pull msr.ci.mirantis.com/twizda/mcr-cluster-config`
 
 ## Example usage
 
@@ -23,19 +23,19 @@ If you are running in a secured environment or use Docker Content Trust policy e
 1. Run the container:
 
     ```
-    docker run -t --rm --name audit-cluster \
+    docker run -t --rm --name mcr-cluster-config \
       -v /var/run/docker.sock:/var/run/docker.sock \
       -e affinity:container==ucp-controller \
-      msr.ci.mirantis.com/twizda/audit-cluster
+      msr.ci.mirantis.com/twizda/mcr-cluster-config
     ```
 
 1. Data will be returned:
 
     ```
-    $ docker run -t --rm --name audit-cluster \
+    $ docker run -t --rm --name mcr-cluster-config \
         -v /var/run/docker.sock:/var/run/docker.sock \
         -e affinity:container==ucp-controller \
-        msr.ci.mirantis.com/twizda/audit-cluster
+        msr.ci.mirantis.com/twizda/mcr-cluster-config
     ========================
     Data for all nodes:
     2 Core x 4
@@ -96,19 +96,19 @@ If you are running in a secured environment or use Docker Content Trust policy e
 1. Run the container locally, updating the `UCP_URL` and the path to your extracted client bundle:
 
     ```
-    docker run -t --rm --name audit-cluster \
+    docker run -t --rm --name mcr-cluster-config \
       -e UCP_URL="mke.example.com" \
       -v /path/to/your/client/bundle:/data:ro \
-      msr.ci.mirantis.com/twizda/audit-cluster
+      msr.ci.mirantis.com/twizda/mcr-cluster-config
     ```
 
 1. Results will be returned:
 
     ```
-    $ docker run -t --rm --name audit-cluster \
+    $ docker run -t --rm --name mcr-cluster-config \
         -e UCP_URL="ucp.example.com" \
         -v /path/to/your/client/bundle:/data:ro \
-        msr.ci.mirantis.com/twizda/audit-cluster
+        msr.ci.mirantis.com/twizda/mcr-cluster-config
     ========================
     Data for all nodes:
     2 Core x 4
